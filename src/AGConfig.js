@@ -34,9 +34,7 @@ const AGConfig = {
             field: 'date',
             headerName: 'Build Date',
             cellEditor: 'datePicker',
-            editable: true,
-            sortable: true,
-            filter: true
+            editable: true
         },
         {
             field: "country",
