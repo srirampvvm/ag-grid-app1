@@ -23,6 +23,7 @@ function getDatePicker() {
   };
   return Datepicker;
 }
+
 function getCharCodeFromEvent(event) {
   event = event || window.event;
   return (typeof event.which == "undefined") ? event.keyCode : event.which;

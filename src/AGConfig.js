@@ -31,7 +31,7 @@ const AGConfig = {
             filter: true
         },
         {
-            field: 'buildDate',
+            field: 'date',
             headerName: 'Build Date',
             cellEditor: 'datePicker',
             editable: true,

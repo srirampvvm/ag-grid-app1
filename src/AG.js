@@ -29,9 +29,6 @@ class AG extends React.Component {
                 selectCellRenderer: function (params) {
                     return params.colDef.refData[params.value];
                 },
-                selectCellEditor: function (params) {
-                    return Object.keys(params.colDef.refData)
-                },
                 loadingRenderer: function (params) {
                     if (params.value !== undefined) {
                         return params.value;
@@ -71,11 +68,6 @@ class AG extends React.Component {
             this.modified = [];
         }
     }
-    objCategoryMappings = {
-        "0": "No",
-        "1": "Yes",
-    };
-
 
     getGridConfig = () => {
         console.log('fetching GridConfig')
@@ -91,20 +83,7 @@ class AG extends React.Component {
         gridConfig.columnDefs.push({ field: 'rid', hide: false });
         gridConfig.columnDefs.push({ field: 'uc', hide: false });
         gridConfig.columnDefs.push({ headerName: "Row", valueGetter: "node.rowIndex + 1" });
-        gridConfig.columnDefs.push({
-            headerName: 'Is Subcategory', field: 'IsSubcategory',
-            cellEditor: 'agSelectCellEditor',
-            editable: true,
-            cellEditorParams: {
-                //values: this.extractValues(this.objCategoryMappings),
-                values: ['1', '0']
-            },
-            cellRenderer: (params) => {
-                //return this.mapCategory(params);
-                return params.data.IsSubcategory == '1' ? 'Yes' : 'No'
-            },
-            refData: this.objCategoryMappings,
-        });
+
         gridConfig.colIndx = new Array();
         gridConfig.uc = '';
         gridConfig.columnDefs.forEach((colDef, i) => {
@@ -113,18 +92,6 @@ class AG extends React.Component {
         })
         return gridConfig;
     }
-
-    extractValues = (mappings) => {
-        return Object.keys(mappings);
-    }
-
-    mapCategory = (objRowData) => {
-        if (objRowData.data.IsSubcategory == "1")
-            return "Yes";
-        else if (objRowData.data.IsSubcategory == "0")
-            return "No";
-    }
-
 
     fetchData2 = () => {
         const updateData = (data) => {
@@ -150,7 +117,7 @@ class AG extends React.Component {
                 element.rid = i;
                 element.uc = this.state.gridConfig.uc;
                 element.country = 'UK'
-                element.IsSubcategory = "0"
+                element.date = '12/13/2020'
             })
             this.gridState.original = JSON.parse(JSON.stringify(data))
             var dataSource = {
@@ -354,18 +321,6 @@ class AG extends React.Component {
         )
     }
 
-}
-var cellRenderer = function (params) {
-    return parseInt(params.node.id) + 1;
-};
-function CountryCellRenderer(params) {
-    return params.value.name;
-}
-function setText(selector, text) {
-    document.querySelector(selector).innerHTML = text;
-}
-function setLastButtonDisabled(disabled) {
-    document.querySelector('#btLast').disabled = disabled;
 }
 
 export default AG
