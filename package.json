@@ -3,11 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ag-grid-community/client-side-row-model": "^25.0.1",
+    "@ag-grid-community/core": "^25.0.1",
+    "@ag-grid-community/infinite-row-model": "^25.0.1",
+    "@ag-grid-community/react": "^25.0.1",
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
+    "ag-grid-community": "^24.1.0",
+    "ag-grid-react": "^24.1.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-load-script": "0.0.6",
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"
   },
